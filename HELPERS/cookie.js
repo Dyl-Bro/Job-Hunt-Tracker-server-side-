@@ -14,7 +14,7 @@ function cookieAuthentication(req, res, next) {
     next();
   } catch (err) {
     console.log("error with authentication");
-    res.clearCookie("token");
+    res.clearCookie("AuthToken");
     return res.redirect(`${process.env.API_URL}/accounts/login`);
   }
 }

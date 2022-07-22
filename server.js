@@ -5,7 +5,7 @@ require("dotenv/config");
 const api = process.env.API_URL;
 const cors = require("cors");
 const morgan = require("morgan");
-const tokenAuthentication = require("./HELPERS/jwt");
+//const tokenAuthentication = require("./HELPERS/jwt");
 const cookieAuthentication = require("./HELPERS/cookie");
 
 app.use(express.json());

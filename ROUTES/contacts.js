@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No Hiring Contacts to view");
+      res.status(204).send("No Hiring Contacts to view");
     } else {
       res.status(200).send(results);
     }
@@ -43,6 +43,9 @@ router.get("/:AppID", async (req, res) => {
   pool.query(query, req.params.AppID, (error, results, fields) => {
     if (error) {
       res.status(400).send(error);
+    }
+    if (results.length == 0) {
+      res.status(204).send("No Hiring Contacts to view");
     } else {
       res.status(200).send(results);
     }

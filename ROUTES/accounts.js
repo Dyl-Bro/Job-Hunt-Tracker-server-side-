@@ -25,25 +25,21 @@ router.post("/login", async (req, res) => {
         expiresIn: "1d",
       });
       res.cookie("AuthToken", token, { httpOnly: true });
-      res
-        .status(200)
-        .send({
-          user_id: results[0].user_id,
-          accountHolder: results[0].email,
-          token,
-        });
+      res.status(200).send({
+        user_id: results[0].user_id,
+        accountHolder: results[0].email,
+        token,
+      });
     } else if (results.length > 0 && password == results[0].pass_word) {
       const token = jwt.sign({ user_id: results[0].user_id }, secret, {
         expiresIn: "1d",
       });
       res.cookie("AuthToken", token, { httpOnly: true });
-      res
-        .status(200)
-        .send({
-          user_id: results[0].user_id,
-          accountHolder: results[0].email,
-          token,
-        });
+      res.status(200).send({
+        user_id: results[0].user_id,
+        accountHolder: results[0].email,
+        token,
+      });
     } else {
       res.status(400).send("Authorization Failed");
     }
@@ -53,10 +49,6 @@ router.post("/login", async (req, res) => {
 router.post("/register", async (req, res) => {
   const query =
     "INSERT INTO AccountHolder( first_name, last_name, email, pass_word) VALUES (?, ?, ?, ?)";
-  //VALUES('Mickey', 'Mouse', 'mickeymouse@gmail.com', 'mickey!234');
-  console.log(
-    "PASSWORD BEFORE HASHING-------------------->" + JSON.stringify(req.body)
-  );
 
   let accountHolder = [
     req.body.first,
@@ -80,12 +72,10 @@ router.get("/:id", (req, res) => {
     if (error) {
       res.status(400).send(error);
     } else {
-      res
-        .status(200)
-        .send({
-          user_id: results[0].user_id,
-          first_name: results[0].first_name,
-        });
+      res.status(200).send({
+        user_id: results[0].user_id,
+        first_name: results[0].first_name,
+      });
     }
   });
 });

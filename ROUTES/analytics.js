@@ -11,7 +11,7 @@ router.get("/behavioral-interview-skill-analysis", (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No behavioral interview Scores found");
+      res.status(204).send("No behavioral interview Scores found");
     } else {
       res.status(200).send(results);
     }
@@ -27,7 +27,7 @@ router.get("/coding-interview-skill-analysis", (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No coding interview Scores found");
+      res.status(204).send("No coding interview Scores found");
     } else {
       res.status(200).send(results);
     }
@@ -42,7 +42,7 @@ router.get("/system-design-interview-skill-analysis", (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No system design interview Scores found");
+      res.status(204).send("No system design interview Scores found");
     } else {
       res.status(200).send(results);
     }
@@ -58,7 +58,7 @@ router.get("/interview-success-rate", (req, res) => {
     }
     if (results.length == 0) {
       res
-        .status(407)
+        .status(204)
         .send("No Interviews Associted with this account Recorded");
     } else {
       res.status(200).send(results);
@@ -75,7 +75,7 @@ router.get("/offer-success-rate", (req, res) => {
     }
     if (results.length == 0) {
       res
-        .status(407)
+        .status(204)
         .send("No Interviews Associted with this account Recorded");
     } else {
       res.status(200).send(results);

@@ -23,11 +23,33 @@ router.post("/:AppID", async (req, res) => {
     }
   });
 });
+router.put("/:interview_id", (req, res) => {
+  const query =
+    "UPDATE interview SET behavioral_interview_score = ?, coding_interview_score = ?, systemDesign_interview_score = ? WHERE interview_id = ?";
+  const updateFields = [
+    req.body.behavioral_interview_score,
+    req.body.coding_interview_score,
+    req.body.systemDesign_interview_score,
+    req.params.interview_id,
+  ];
+  pool.query(query, updateFields, (error, results, fields) => {
+    if (error) {
+      console.log(error);
+      res.status(400).send(error);
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
+
 router.get("/", async (req, res) => {
   const query = "SELECT * FROM interview WHERE account_holder = ?";
   pool.query(query, req.user, (error, results, fields) => {
     if (error) {
       res.status(400).send(error);
+    }
+    if (results.length == 0) {
+      res.status(204).send("No Applications to view");
     } else {
       res.status(200).send(results);
     }

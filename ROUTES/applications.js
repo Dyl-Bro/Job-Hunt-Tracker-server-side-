@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No Applications to view");
+      res.status(204).send("No Applications to view");
     } else {
       res.status(200).send(results);
     }
@@ -58,7 +58,7 @@ router.get("/:applicationId", async (req, res) => {
       res.status(400).send(error);
     }
     if (results.length == 0) {
-      res.status(407).send("No Applications to view");
+      res.status(204).send("No Applications to view");
     } else {
       res.status(200).send(results);
     }
