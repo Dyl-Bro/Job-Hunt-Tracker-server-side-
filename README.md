@@ -593,7 +593,7 @@ axios(config)
 ```
 
 --------------------------------------------------------------------------------------------------------------
-## Retrieve an analysis of a user's Behavior Interview Skills
+## Retrieve an analysis of a user's System Design Interview Skills
 **Request**...
 
 ` GET https://api.jobhunttracker.live/api/v1/analytics/system-design-interview-skill-analysis`
